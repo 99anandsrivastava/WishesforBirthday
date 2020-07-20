@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+    <div class="container">
+        <div class="navbar-translate">
+            <a class="navbar-brand" href="#">Birthday Wishes</a>
+            <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+                <span class="navbar-toggler-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Wish on Facebook" data-placement="bottom" href="https://www.facebook.com/priya.saha.376" target="_blank">
+                        <i class="fa fa-facebook-square"></i>
+                        <p class="d-lg-none">Facebook</p>
+                    </a>
+                </li>
+                <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Wish on Instagram" data-placement="bottom" href="https://www.instagram.com/29priyasaha" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                        <p class="d-lg-none">Instagram</p>
+                    </a>
+                </li>
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="https://www.github.com/CreativeTimOfficial/paper-kit-2-angular" target="_blank">
+                        <i class="fa fa-github"></i>
+                        <p class="d-lg-none">GitHub</p>
+                    </a>
+                </li> -->
+                <!-- <li class="nav-item" *ngIf="!isDocumentation()">
+                    <a href="http://pk2-angular.creative-tim.com/documentation/tutorial" class="nav-link" target="_blank"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
+                </li> -->
+                <li class="nav-item" *ngIf="isHome()">
+                    <a href="#" class="btn btn-primary btn-round">4th August 2020</a>
+                    <a [routerLink]="['/addwish']" class="btn btn-danger btn-round">Add Wishes</a>
+                    <a [routerLink]="['/user-profile']" class="btn btn-primary btn-round">See Wishes</a>
+                    <ng-template #anonymousUser>
+                        <a (click)="login()"class="btn btn-danger btn-round">Admin</a>
+                        </ng-template>
+                    
+                    <ng-container *ngIf="appUser; else anonymousUser">
+                        <img mat-card-avatar class="user-avatar" src={{appUser.photoURL}}>
+                        <button mat-button [matMenuTriggerFor]="menu">
+                        {{appUser.name}}<mat-icon>arrow_drop_down</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)=logout()>Logout</button>
+                        </mat-menu>
+                        </ng-container>
+                </li>
+                <li class="nav-item" *ngIf="!isHome()">
+                    <a href="#" class="btn btn-primary btn-round">4th August 2020</a>
+                    <a *ngIf="!isAddWish()" [routerLink]="['/addwish']" class="btn btn-danger btn-round">Add Wishes</a>
+                    <a [routerLink]="['/user-profile']" class="btn btn-primary btn-round">See Wishes</a>
+                    <ng-template #anonymousUser>
+                        <button mat-button class="btn btn-danger btn-round" (click)="login()">Admin</button>
+                        </ng-template>
+                    
+                    <ng-container *ngIf="appUser; else anonymousUser">
+                        <img mat-card-avatar class="user-avatar" src={{appUser.photoURL}}>
+                        <button mat-button [matMenuTriggerFor]="menu">
+                        {{appUser.name}}<mat-icon>arrow_drop_down</mat-icon>
+                        </button>
+                        <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)=logout()>Logout</button>
+                        </mat-menu>
+                        </ng-container>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
