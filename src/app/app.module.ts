@@ -27,7 +27,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { HttpClientModule } from '@angular/common/http';
-
+import { CovalentTextEditorModule } from '@covalent/text-editor';
+import { PersonalComponent } from './personal/personal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
     WishComponent,
     PaginatorComponent,
     SlugPipe,
+    PersonalComponent,
    
   ],
   imports: [
@@ -59,6 +61,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireAuthModule,
     AngularEditorModule,
     HttpClientModule,
+    CovalentTextEditorModule,
     AppRoutingModule
   ],
   providers: [],

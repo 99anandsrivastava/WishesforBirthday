@@ -1,22 +1,25 @@
 <div class="wrapper">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/birthday-wishes-and-quotes.jpg');">
-        <div class="filter"></div>
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('./assets/img/adam-kring-1pMRoKhF84k-unsplash.jpg');">   
     </div>
-    
-                    <div class ="form mt-5">
-                        <h1 style="font-weight: 900; color: red; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{formTitle}} Wish</h1>
-                        <hr />
+    <div class = "form mt-5">
+        <h1 style="font-weight: 900; color: red; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{formTitle}} Wish <i class="fa fa-heart heart"></i></h1>
+    </div>
+                    <div class ="form mt-5 section-dark">
+                        <br>
+                       
                         <form #myForm="ngForm" (ngSubmit)="myForm.form.valid && saveWishPost()" accept-charset="UTF-8" novalidate>
-                        <input type="text" class="blogHeader" placeholder="Name..." class="form-control" name="wishTitle"
+                            <label style="font-weight: bolder; color:white;">Your Name : </label>
+                        <input type="text" class="blogHeader" class="form-control" name="wishTitle"
                         [(ngModel)]="wishData.name" #postTitle="ngModel" required />
                         <span class="text-danger" *ngIf="myForm.submitted && postTitle.errors?.required">
                         Name is required
                         </span>
                         <br />
                         <div class="form-group">
-                            <!-- <ckeditor name="myckeditor" [config]="ckeConfig" [(ngModel)]="wishData.content" #myckeditor="ngModel"
-                        debounce="300" [editor]="Editor"></ckeditor> -->
-                        <angular-editor name="myeditor" [placeholder]="'Enter wish here'" [(ngModel)]="wishData.content" #myeditor="ngModel" [config]="config" required></angular-editor>
+                            <label style="font-weight: bolder;color:white;">Your Wish : </label>
+                        <!-- <angular-editor name="myeditor" [placeholder]="'Enter wish here'" [(ngModel)]="wishData.content" #myeditor="ngModel" [config]="config" required></angular-editor> -->
+                        <td-text-editor #myeditor="ngModel" name="myeditor" [(ngModel)]="wishData.content" required [options]="options"></td-text-editor>
+                        
                         <span class="text-danger" *ngIf="myForm.submitted && myeditor.errors?.required">
                             Wish is required
                             </span>

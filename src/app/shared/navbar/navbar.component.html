@@ -45,6 +45,7 @@
                         {{appUser.name}}<mat-icon>arrow_drop_down</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
+                        <button *ngIf="appUser.isAdmin" mat-menu-item (click)=verify()>Secret Page</button>
                         <button mat-menu-item (click)=logout()>Logout</button>
                         </mat-menu>
                         </ng-container>
@@ -52,7 +53,7 @@
                 <li class="nav-item" *ngIf="!isHome()">
                     <a href="#" class="btn btn-primary btn-round">4th August 2020</a>
                     <a *ngIf="!isAddWish()" [routerLink]="['/addwish']" class="btn btn-danger btn-round">Add Wishes</a>
-                    <a [routerLink]="['/user-profile']" class="btn btn-primary btn-round">See Wishes</a>
+                    <a *ngIf="!isSeeWish()"[routerLink]="['/user-profile']" class="btn btn-primary btn-round">See Wishes</a>
                     <ng-template #anonymousUser>
                         <button mat-button class="btn btn-danger btn-round" (click)="login()">Admin</button>
                         </ng-template>
@@ -63,9 +64,11 @@
                         {{appUser.name}}<mat-icon>arrow_drop_down</mat-icon>
                         </button>
                         <mat-menu #menu="matMenu">
-                        <button mat-menu-item (click)=logout()>Logout</button>
+                        <button *ngIf="appUser.isAdmin" mat-menu-item (click)=verify()>Secret Page</button>
+                        <button  mat-menu-item (click)=logout()>Logout</button>
                         </mat-menu>
                         </ng-container>
+                        
                 </li>
                 
             </ul>

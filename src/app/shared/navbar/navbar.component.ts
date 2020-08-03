@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AuthService } from 'app/services/auth.service';
 import { AppUser } from 'app/models/appuser';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navbar',
@@ -12,7 +13,7 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     appUser: AppUser;
-    constructor(public location: Location, private element : ElementRef , private authService: AuthService) {
+    constructor(public location: Location, private element : ElementRef , private authService: AuthService , private router: Router) {
         this.sidebarVisible = false;
     }
 
@@ -89,10 +90,29 @@ export class NavbarComponent implements OnInit {
           }
       }
 
+      isSeeWish()
+      {
+          var titlee = this.location.prepareExternalUrl(this.location.path());
+          if(titlee.charAt(0) === '#'){
+              titlee = titlee.slice( 1 );
+          }
+            if( titlee === '/user-profile' ) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
     login() {
         this.authService.login();
         }
     logout() {
         this.authService.logout();
+        }
+
+        verify(){
+         
+            this.router.navigate(['personal']);
         }
 }
